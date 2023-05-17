@@ -1,0 +1,5 @@
+print("entrez votre nom :")
+nom: str = input()
+print("entrez votre prenom :")
+prenom : str = input()
+print(f"bonjour {nom} {prenom}")
