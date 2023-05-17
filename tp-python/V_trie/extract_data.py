@@ -1,5 +1,3 @@
-from pygnuplot import gnuplot
-
 def get_data_from_file(filename):
     data = []
     with open(filename, 'r') as file:
