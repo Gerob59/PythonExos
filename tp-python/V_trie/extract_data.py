@@ -1,7 +1,9 @@
 import random
 import time
-from PyGnuplot import gp
-from matplotlib import figure
+from matplotlib import pyplot as plt
+from extract_data_from_file import get_data_from_file
+# from III_autre_tri import tri_extraction, tri_insertion
+# from ..I_tableaux_quelconques import tri_bulle
 
 
 def copie(t):
@@ -40,53 +42,64 @@ def tri_a_bulles(t):
                 t[j], t[j + 1] = t[j + 1], t[j]
 
 
-def temps_tri_bulles(t):
+def temps_methode_tri(t, methode_tri):
     copie_t = t.copy()
     debut = time.time()
-    tri_a_bulles(copie_t)
+    methode_tri(copie_t)
     fin = time.time()
     temps_execution = fin - debut
     return temps_execution
 
 
-def stats_melange(nmin, nmax, pas, fois):
+def stats_melange(methode_tri, nmin, nmax, pas, fois):
+    fichier = "temps_tris_melange.txt"
     tableau = tableau_premiers_entiers_melanges(nmax)
-    __stats(tableau, nmin, nmax, pas, fois)
+    __stats(tableau, fichier, methode_tri, nmin, nmax, pas, fois)
 
 
-def stats_ordonne(nmin, nmax, pas, fois):
+def stats_ordonne(methode_tri, nmin, nmax, pas, fois):
+    fichier = "temps_tris_ordonne.txt"
     tableau = tableau_premiers_entiers(nmax)
-    __stats(tableau, nmin, nmax, pas, fois)
+    __stats(tableau, fichier, methode_tri, nmin, nmax, pas, fois)
 
 
-def stats_inverse(nmin, nmax, pas, fois):
+def stats_inverse(methode_tri, nmin, nmax, pas, fois):
+    fichier = "temps_tris_inverse.txt"
     tableau = tableau_premiers_entiers_inverses(nmax)
-    __stats(tableau, nmin, nmax, pas, fois)
+    __stats(tableau, fichier, methode_tri, nmin, nmax, pas, fois)
 
 
-def __stats(t, nmin, nmax, pas, fois):
-    fichier = "temps_tris.txt"
-
-    with open(fichier, 'a') as f:
+def __stats(tableau, fichier, methode_tri, nmin, nmax, pas, fois):
+    with open(fichier, 'w') as f:
         f.write("Taille Temps moyen\n")
-
-    for taille in range(nmin, nmax + 1, pas):
-        temps_total = 0
-
-        for _ in range(fois):
-            temps_execution = temps_tri_bulles(t)
-            temps_total += temps_execution
-
-        temps_moyen = temps_total / fois
-
-        with open(fichier, 'a') as f:
+        for taille in range(nmin, nmax + 1, pas):
+            temps_total = sum(temps_methode_tri(tableau, methode_tri) for _ in range(fois))
+            temps_moyen = temps_total / fois
             f.write(f"{taille} {temps_moyen}\n")
-
-    with open(fichier, 'a') as f:
-        f.write("\n")
 
     print("Les temps moyens ont été enregistrés dans le fichier", fichier)
 
+
+def compare_temps_tris(methode_tri, nmin, nmax, pas, fois):
+    stats_melange(methode_tri, nmin, nmax, pas, fois)
+    stats_ordonne(methode_tri, nmin, nmax, pas, fois)
+    stats_inverse(methode_tri, nmin, nmax, pas, fois)
+
+    files = ['temps_tris_inverse.txt', 'temps_tris_ordonne.txt', 'temps_tris_melange.txt']
+    data = {}
+
+    for file in files:
+        data[file] = get_data_from_file(file)
+
+    # Créer le graphique combiné
+    for file, values in data.items():
+        plt.plot(values['tableau_x'], values['tableau_y'], label=file)
+
+    plt.xlabel(data[files[0]]['titre_x'])
+    plt.ylabel(data[files[0]]['titre_y'])
+    plt.title('Comparaison des temps moyens')
+    plt.legend()
+    plt.show()
 
 if __name__ == "__main__":
     # # === question 1 === #
@@ -119,27 +132,14 @@ if __name__ == "__main__":
     # tableau = [5, 2, 8, 1, 9]
     # print("Temps de tri à bulles :", temps_tri_bulles(tableau), "secondes")
 
-    # # === question 9 === #
-    # nmin = 100
-    # nmax = 1000
-    # pas = 100
-    # fois = 5
-    #
-    # # === question 6 & 9 === #
-    # stats_melange(nmin, nmax, pas, fois)
-    #
-    # # === question 7 & 9 === #
-    # stats_ordonne(nmin, nmax, pas, fois)
-    #
-    # # === question 8 & 9 === #
-    # stats_inverse(nmin, nmax, pas, fois)
+    # === question 6 & 7 & 8 & 9 === #
+    # ont été faite puis refactor pour convenir à la question 10
 
-    # Génération du script gnuplot
-    # script = "plot 'stats.dat' with lines"
+    # === question 10 === #
+    nmin = 100
+    nmax = 1000
+    pas = 100
+    fois = 5
+    methode_de_tri = tri_a_bulles
+    compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
 
-    # Exécution du script gnuplot
-    figure1 = gp()  # Create a new figure handle
-    figure2 = gp(r"C:\Program Files\gnuplot\bin\gnuplot.exe")  # Can also specify which gnuplot to use
-    figure1.a("plot sin(x)")
-    figure2.a("plot cos(x)")
-    # pi = figure.a("print pi")
