@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 from extract_data_from_file import get_data_from_file
 # from III_autre_tri import tri_extraction, tri_insertion
 # from ..I_tableaux_quelconques import tri_bulle
+from tri import tri_bulle, tri_insertion, tri_extraction
 
 
 def copie(t):
@@ -33,13 +34,6 @@ def ligne_dans_fichier(f, n, t):
         ligne = str(n) + ' ' + str(t) + '\n'  # cast 't' et 'n' en string pour pouvoir les concaténer
         fichier.write(ligne)
 
-
-def tri_a_bulles(t):
-    n = len(t)
-    for i in range(n - 1):
-        for j in range(0, n - i - 1):
-            if t[j] > t[j + 1]:
-                t[j], t[j + 1] = t[j + 1], t[j]
 
 
 def temps_methode_tri(t, methode_tri):
@@ -140,6 +134,6 @@ if __name__ == "__main__":
     nmax = 1000
     pas = 100
     fois = 5
-    methode_de_tri = tri_a_bulles
+    methode_de_tri = tri_bulle
     compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
 

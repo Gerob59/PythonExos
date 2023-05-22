@@ -29,7 +29,6 @@ def recherche_dichotomique(element, tableau):
     return -1
 
 
-# insert 
 def insertion(e, t, n):
     # Recherche de l'index où insérer l'élément
     i = 0
