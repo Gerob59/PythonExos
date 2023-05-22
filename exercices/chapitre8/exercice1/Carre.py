@@ -1,4 +1,4 @@
-from exercices.chapitre8.exo1.Rectangle import Rectangle
+from exercices.chapitre8.exercice1.Rectangle import Rectangle
 
 
 class Carre(Rectangle):

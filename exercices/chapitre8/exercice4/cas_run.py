@@ -1,5 +1,5 @@
-from exercices.chapitre8.exo4.CasNormal import CasNormal
-from exercices.chapitre8.exo4.CasSpecial import CasSpecial
+from exercices.chapitre8.exercice4.CasNormal import CasNormal
+from exercices.chapitre8.exercice4.CasSpecial import CasSpecial
 
 
 def casQuiConvient(estNormal: bool = True):

@@ -14,7 +14,7 @@ def run():
     screen = pygame.display.set_mode((labyrinthe.longueur * taille_case, labyrinthe.hauteur * taille_case))
     pygame.display.set_caption('Labyrinthe')
 
-    # Boucle de jeu
+    # Boucle de jeux
     finis = False
     while not finis:
         # Gestion des événements

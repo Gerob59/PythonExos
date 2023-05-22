@@ -12,7 +12,7 @@ trouve = False
 for lettre in solution:
     affichage += "_ "
 
-# Boucle du jeu, se termine quand le mot est trouve
+# Boucle du jeux, se termine quand le mot est trouve
 while not trouve:
     print(affichage)
     proposition = input("Entrez une lettre ou '?' pour abandonner : ")[0:1].upper()  # force la premiere lettre en maj

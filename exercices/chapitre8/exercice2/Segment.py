@@ -1,4 +1,4 @@
-from exercices.chapitre8.exo2.Point import Point
+from exercices.chapitre8.exercice2.Point import Point
 
 
 class Segment:

@@ -13,7 +13,7 @@ def run_labyrinthe():
     lab = Labyrinthe(compo2())
     clear_terminal()
 
-    # boucle de jeu
+    # boucle de jeux
     while True:
         # efface l'écran
         clear_terminal()
