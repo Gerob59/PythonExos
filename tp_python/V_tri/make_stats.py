@@ -97,23 +97,22 @@ def compare_methode_tri(type_data, nmin, nmax, pas, fois):
     if type_data == "inverse":
         for methode in methodes:
             stats_inverse(methode, nmin, nmax, pas, fois)
-            data[methode] = get_data_from_file("temps_tris_inverse.txt")
+            data[methode.__name__] = get_data_from_file("temps_tris_inverse.txt")
 
     elif type_data == "melange":
         for methode in methodes:
             stats_melange(methode, nmin, nmax, pas, fois)
-            data[methode] = get_data_from_file("temps_tris_melange.txt")
+            data[methode.__name__] = get_data_from_file("temps_tris_melange.txt")
 
     elif type_data == "ordonne":
         for methode in methodes:
             stats_ordonne(methode, nmin, nmax, pas, fois)
-            data[methode] = get_data_from_file("temps_tris_ordonne.txt")
+            data[methode.__name__] = get_data_from_file("temps_tris_ordonne.txt")
 
     for file, values in data.items():
         plt.plot(values['tableau_x'], values['tableau_y'], label=file)
 
-    __pyplot_display(data[methodes[0]]['titre_x'], data[methodes[0]]['titre_y'])
-
+    __pyplot_display(data[methodes[0].__name__]['titre_x'], data[methodes[0].__name__]['titre_y'])
 
 
 def __pyplot_display(titre_x, titre_y):
