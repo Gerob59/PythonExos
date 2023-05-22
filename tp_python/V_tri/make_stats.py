@@ -179,5 +179,4 @@ if __name__ == "__main__":
     # compare_methode_tri(type_tableau, nmin, nmax, pas, fois)
 
     # === question 11 === #
-    # ecart_type_echantillon = statistics.pstdev((1, 2))
-    # print("L'écart-type (échantillon) est :", ecart_type_echantillon)
+    # dans le terminal
