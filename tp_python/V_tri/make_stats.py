@@ -7,7 +7,6 @@ from tri import tri_bulle, tri_insertion, tri_extraction
 # from ..I_tableaux_quelconques import tri_bulle
 
 
-
 def copie(t):
     return t.copy()  # Créer une copie du tableau
 
@@ -65,7 +64,7 @@ def stats_inverse(methode_tri, nmin, nmax, pas, fois):
 
 def __stats(tableau, fichier, methode_tri, nmin, nmax, pas, fois):
     with open(fichier, 'w') as f:
-        f.write("Taille Temps moyen\n")
+        f.write("Taille Temps_moyen\n")
         for taille in range(nmin, nmax + 1, pas):
             temps_total = sum(temps_methode_tri(tableau, methode_tri) for _ in range(fois))
             temps_moyen = temps_total / fois
@@ -89,11 +88,7 @@ def compare_temps_tris(methode_tri, nmin, nmax, pas, fois):
     for file, values in data.items():
         plt.plot(values['tableau_x'], values['tableau_y'], label=file)
 
-    plt.xlabel(data[files[0]]['titre_x'])
-    plt.ylabel(data[files[0]]['titre_y'])
-    plt.title('Comparaison des temps moyens')
-    plt.legend()
-    plt.show()
+    __pyplot_display(data[files[0]]['titre_x'], data[files[0]]['titre_y'])
 
 
 def compare_methode_tri(type_data, nmin, nmax, pas, fois):
@@ -117,8 +112,13 @@ def compare_methode_tri(type_data, nmin, nmax, pas, fois):
     for file, values in data.items():
         plt.plot(values['tableau_x'], values['tableau_y'], label=file)
 
-    plt.xlabel(data[methodes[0]]['titre_x'])
-    plt.ylabel(data[methodes[0]]['titre_y'])
+    __pyplot_display(data[methodes[0]]['titre_x'], data[methodes[0]]['titre_y'])
+
+
+
+def __pyplot_display(titre_x, titre_y):
+    plt.xlabel(titre_x)
+    plt.ylabel(titre_y)
     plt.title('Comparaison des temps moyens')
     plt.legend()
     plt.show()
@@ -151,18 +151,20 @@ if __name__ == "__main__":
     # my_file = 'stats.dat'
     # ligne_dans_fichier(my_file, 10, 5.7)  # ne pas oublier de supprimer le test après dans 'stats.dat'
 
-    # # === question 5 === #
-    # tableau = [5, 2, 8, 1, 9]
-    # print("Temps de tri à bulles :", temps_tri_bulles(tableau), "secondes")
+    # === question 5 === #
+    # tableau = [5, 2, 8, 1, 9]*1000
+    # print("Temps de tri à bulles :", temps_methode_tri(tableau, tri_bulle), "secondes")
 
     # === question 6 & 7 & 8 & 9 === #
-    # ont été faite puis refactor pour convenir à la question 10
-
-    # === question 10 === #
     nmin = 100
     nmax = 1000
     pas = 100
     fois = 5
+    # stats_melange(tri_bulle, nmin, nmax, pas, fois)
+    # stats_ordonne(tri_bulle, nmin, nmax, pas, fois)
+    # stats_inverse(tri_bulle, nmin, nmax, pas, fois)
+
+    # === question 10 === #
     # methode_de_tri = tri_bulle
     # methode_de_tri = tri_extraction
     # methode_de_tri = tri_insertion
@@ -173,3 +175,4 @@ if __name__ == "__main__":
     type_tableau = "inverse"
     compare_methode_tri(type_tableau, nmin, nmax, pas, fois)
 
+    # === question 11 === #
