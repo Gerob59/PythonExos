@@ -2,7 +2,6 @@ import pynsee.download
 import pandas as pd
 import random
 
-
 df_city = pynsee.download.download_file("FILOSOFI_COM_2016")
 
 # random.choices(data, weights, cum_weights, k)
@@ -10,7 +9,6 @@ df_city = pynsee.download.download_file("FILOSOFI_COM_2016")
 # weights : séquence de poids associés à chaque élément de data
 # cum_weights : séquence de poids cumulatifs associés à chaque élément de data
 # k : nombre d'éléments à tirer. Par défaut, il est fixé à 1.
-
 
 if __name__ == "__main__":
     # 1
@@ -29,17 +27,10 @@ if __name__ == "__main__":
 
     # 4
     first_6_rows = df_city.head(6)
-
     # Créer une liste des poids pour les tirages
     weights = [0.5] + [0.5 / (len(first_6_rows) - 1)] * (len(first_6_rows) - 1)
-
     # Effectuer les 100 tirages avec les poids spécifiés
     sample_100_with_weights = random.choices(first_6_rows.index, k=100, weights=weights)
-
     # Compter combien de fois chaque échantillon a été choisi
     counts = pd.Series(sample_100_with_weights).value_counts()
-
     print(counts)
-
-
-

@@ -29,14 +29,10 @@ if __name__ == "__main__":
 
     # 4
     first_6_rows = df.head(6)
-
     # Créer une liste des poids pour les tirages
     weights = [0.5] + [0.5 / (len(first_6_rows) - 1)] * (len(first_6_rows) - 1)
-
     # Effectuer les 100 tirages avec les poids spécifiés
     sample_100_with_weights = random.choices(first_6_rows.index, k=100, weights=weights)
-
     # Compter combien de fois chaque échantillon a été choisi
     counts = pd.Series(sample_100_with_weights).value_counts()
-
     print(counts)
