@@ -15,7 +15,7 @@ def recherche_lineaire(tableau, element):
 # si notre élément est plus petit, on défini fin a l'indice de la case milieu.
 # et inversement si l'élement est plus grand.
 # on s'arrete quand on a trouvé l'élément, ou quand debut == fin qui envoie une erreur.
-def recherche_dichotomique(tableau, element):
+def recherche_dichotomique(element, tableau):
     debut = 0
     fin = len(tableau) - 1
     while debut <= fin:
@@ -29,24 +29,22 @@ def recherche_dichotomique(tableau, element):
     return -1
 
 
-# insert l'élément à la fin et le fais descendre à sa place.
-def insertion(tableau, element):
-    i = len(tableau) - 1
-    tableau.append(element)  # Ajouter l'élément à la fin du tableau
-    while i >= 0 and tableau[i] > element:
-        tableau[i + 1] = tableau[i]
-        i -= 1
-    tableau[i + 1] = element
+# insert 
+def insertion(e, t, n):
+    # Recherche de l'index où insérer l'élément
+    i = 0
+    while i < n and t[i] < e:
+        i += 1
+
+    # Décalage des éléments vers la droite pour faire de la place à e
+    for j in range(n - 1, i - 1, -1):
+        t[j] = t[j - 1]
+
+    # Insertion de l'élément à sa place
+    t[i] = e
 
 
-# def insertion(tableau, element, taille):
-#     index = taille - 1
-#     while index >= 0 and tableau[index] > element:
-#         tableau[index + 1] = tableau[index]
-#         index -= 1
-#     tableau[index + 1] = element
-
-
+# méthode privée pour faire l'affichage générique de fonction
 def __affichage_resultat(element_recherche, index):
     if index != -1:
         print(f"L'élément {element_recherche} a été trouvé à l'index {index}")
@@ -64,11 +62,11 @@ if __name__ == "__main__":
 
     # Test de la recherche dichotomique
     element_recherche = 9
-    index = recherche_dichotomique(my_tab, element_recherche)
+    index = recherche_dichotomique(element_recherche, my_tab)
     __affichage_resultat(element_recherche, index)
 
     # Test de la procédure d'insertion
     element_insertion = 4
-    insertion(my_tab, element_insertion)
+    insertion(element_insertion, my_tab, len(my_tab))
     print("Tableau après insertion :", my_tab)
 
