@@ -2,8 +2,10 @@ import random
 import time
 from matplotlib import pyplot as plt
 from extract_data_from_file import get_data_from_file
-from ..IV_algo_avance.I_tableaux_quelconques import tri_bulle
-from ..IV_algo_avance.III_autre_tri import tri_insertion, tri_extraction
+from tri import tri_bulle, tri_insertion, tri_extraction
+# from III_autre_tri import tri_extraction, tri_insertion
+# from ..I_tableaux_quelconques import tri_bulle
+
 
 
 def copie(t):
@@ -93,6 +95,7 @@ def compare_temps_tris(methode_tri, nmin, nmax, pas, fois):
     plt.legend()
     plt.show()
 
+
 if __name__ == "__main__":
     # # === question 1 === #
     # tableau = [1, 2, 3, 4, 5]
@@ -133,4 +136,6 @@ if __name__ == "__main__":
     pas = 100
     fois = 5
     methode_de_tri = tri_bulle
+    # methode_de_tri = tri_extraction
+    # methode_de_tri = tri_insertion
     compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
