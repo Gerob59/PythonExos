@@ -3,8 +3,7 @@ import time
 from matplotlib import pyplot as plt
 from extract_data_from_file import get_data_from_file
 from tri import tri_bulle, tri_insertion, tri_extraction
-# from III_autre_tri import tri_extraction, tri_insertion
-# from ..I_tableaux_quelconques import tri_bulle
+import statistics
 
 
 def copie(t):
@@ -84,8 +83,13 @@ def compare_temps_tris(methode_tri, nmin, nmax, pas, fois):
     for file in files:
         data[file] = get_data_from_file(file)
 
-    # Créer le graphique combiné
     for file, values in data.items():
+        # Calculer l'écart-type
+        temps = values['tableau_y']
+        ecart_type = statistics.stdev(temps)
+        print("Écart-type pour", file, ":", ecart_type)
+
+        # Créer le graphique combiné
         plt.plot(values['tableau_x'], values['tableau_y'], label=file)
 
     __pyplot_display(data[files[0]]['titre_x'], data[files[0]]['titre_y'])
@@ -165,13 +169,15 @@ if __name__ == "__main__":
 
     # === question 10 === #
     # methode_de_tri = tri_bulle
-    # methode_de_tri = tri_extraction
+    methode_de_tri = tri_extraction
     # methode_de_tri = tri_insertion
-    # compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
+    compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
 
     # type_tableau = "melange"
     # type_tableau = "ordonne"
-    type_tableau = "inverse"
-    compare_methode_tri(type_tableau, nmin, nmax, pas, fois)
+    # type_tableau = "inverse"
+    # compare_methode_tri(type_tableau, nmin, nmax, pas, fois)
 
     # === question 11 === #
+    # ecart_type_echantillon = statistics.pstdev((1, 2))
+    # print("L'écart-type (échantillon) est :", ecart_type_echantillon)
