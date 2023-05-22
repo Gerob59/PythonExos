@@ -96,6 +96,34 @@ def compare_temps_tris(methode_tri, nmin, nmax, pas, fois):
     plt.show()
 
 
+def compare_methode_tri(type_data, nmin, nmax, pas, fois):
+    data = {}
+    methodes = [tri_bulle, tri_extraction, tri_insertion]
+    if type_data == "inverse":
+        for methode in methodes:
+            stats_inverse(methode, nmin, nmax, pas, fois)
+            data[methode] = get_data_from_file("temps_tris_inverse.txt")
+
+    elif type_data == "melange":
+        for methode in methodes:
+            stats_melange(methode, nmin, nmax, pas, fois)
+            data[methode] = get_data_from_file("temps_tris_melange.txt")
+
+    elif type_data == "ordonne":
+        for methode in methodes:
+            stats_ordonne(methode, nmin, nmax, pas, fois)
+            data[methode] = get_data_from_file("temps_tris_ordonne.txt")
+
+    for file, values in data.items():
+        plt.plot(values['tableau_x'], values['tableau_y'], label=file)
+
+    plt.xlabel(data[methodes[0]]['titre_x'])
+    plt.ylabel(data[methodes[0]]['titre_y'])
+    plt.title('Comparaison des temps moyens')
+    plt.legend()
+    plt.show()
+
+
 if __name__ == "__main__":
     # # === question 1 === #
     # tableau = [1, 2, 3, 4, 5]
@@ -135,7 +163,13 @@ if __name__ == "__main__":
     nmax = 1000
     pas = 100
     fois = 5
-    methode_de_tri = tri_bulle
+    # methode_de_tri = tri_bulle
     # methode_de_tri = tri_extraction
     # methode_de_tri = tri_insertion
-    compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
+    # compare_temps_tris(methode_de_tri, nmin, nmax, pas, fois)
+
+    # type_tableau = "melange"
+    # type_tableau = "ordonne"
+    type_tableau = "inverse"
+    compare_methode_tri(type_tableau, nmin, nmax, pas, fois)
+
