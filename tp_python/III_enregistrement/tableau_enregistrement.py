@@ -1,5 +1,5 @@
-from tp.III_enregistrement.Etudiant import Etudiant
-from tp.III_enregistrement.Promotion import Promotion
+from tp_python.III_enregistrement.Etudiant import Etudiant
+from tp_python.III_enregistrement.Promotion import Promotion
 
 if __name__ == "__main__":
     # Exemple d'utilisation

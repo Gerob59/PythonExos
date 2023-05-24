@@ -3,12 +3,12 @@ from tableau_entier_a import calculer_moyenne, element_present
 import time
 
 
-def tableau_aleatoire(n):
+def tableau_aleatoire(n: int) -> [int]:
     tableau = [randint(0, 100) for _ in range(n)]
     return tableau
 
 
-def tableau_n_premier_entiers_melanges(n):
+def tableau_n_premier_entiers_melanges(n: int) -> [int]:
     tableau = list(range(1, n+1))
     shuffle(tableau)
     return tableau

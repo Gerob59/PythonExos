@@ -7,6 +7,7 @@
 # for i in range(101):
 #     print(i)
 
+
 # 2
 def carre(cote: int):
     for i in range(cote):

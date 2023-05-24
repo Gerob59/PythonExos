@@ -1,5 +1,5 @@
 # on avance dans le tableau tant qu'on a touvé notre element ou qu'on a dépassé la taille du tableau.
-def recherche_lineaire(tableau, element):
+def recherche_lineaire(tableau: [int], element: int) -> int:
     index = 0
     while index < len(tableau) and tableau[index] < element:
         index += 1
@@ -15,7 +15,7 @@ def recherche_lineaire(tableau, element):
 # si notre élément est plus petit, on défini fin a l'indice de la case milieu.
 # et inversement si l'élement est plus grand.
 # on s'arrete quand on a trouvé l'élément, ou quand debut == fin qui envoie une erreur.
-def recherche_dichotomique(element, tableau):
+def recherche_dichotomique(element: int, tableau: [int]) -> int:
     debut = 0
     fin = len(tableau) - 1
     while debut <= fin:
@@ -29,7 +29,7 @@ def recherche_dichotomique(element, tableau):
     return -1
 
 
-def insertion(e, t, n):
+def insertion(e: int, t: [int], n: int):
     # Recherche de l'index où insérer l'élément
     i = 0
     while i < n and t[i] < e:
@@ -44,7 +44,7 @@ def insertion(e, t, n):
 
 
 # méthode privée pour faire l'affichage générique de fonction
-def __affichage_resultat(element_recherche, index):
+def __affichage_resultat(element_recherche: int, index: int):
     if index != -1:
         print(f"L'élément {element_recherche} a été trouvé à l'index {index}")
     else:

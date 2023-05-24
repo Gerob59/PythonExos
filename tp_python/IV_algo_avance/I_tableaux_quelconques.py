@@ -1,4 +1,4 @@
-def index_minimum(t, d, f):
+def index_minimum(t: [int], d: int, f: int) -> int:
     # vérifie si on reste bien dans le tableau
     if d < 0 or f >= len(t) or f < d:
         return -1  # Indice invalide
@@ -17,7 +17,7 @@ def index_minimum(t, d, f):
 
 # Le tri à bulle est un algorithme peu optimal qui effectue n² itérations.
 # À chaque itération, il déplace le plus grand nombre du tableau vers la fin.
-def tri_bulle(t):
+def tri_bulle(t: [int]):
     n = len(t)
     # On ne parcourt pas le dernier indice car on compare l'élément n avec n+1.
     for i in range(n - 1):
