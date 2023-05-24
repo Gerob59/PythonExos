@@ -1,4 +1,4 @@
-df_city_type = {
+df_city_type: dict = {
     'CODGEO': object,
     'LIBGEO': object,
     'NBMENFISC16': float,
