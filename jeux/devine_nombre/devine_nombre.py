@@ -1,7 +1,7 @@
 import random
 
 
-def get_guess_from_user(guess_num):
+def get_guess_from_user(guess_num: int):
     guess = input(f"Essai no {guess_num}\nVotre proposition : ")
     try:
         return int(guess)
@@ -10,7 +10,7 @@ def get_guess_from_user(guess_num):
         return None
 
 
-def print_guess_result(guess, to_find, guess_num):
+def print_guess_result(guess: int, to_find: int, guess_num: int):
     if guess == to_find:
         print(f"Bravo ! Vous avez trouvé {to_find} en {guess_num} essais !")
     elif guess < to_find:
@@ -20,8 +20,8 @@ def print_guess_result(guess, to_find, guess_num):
 
 
 def play_guessing_game():
-    to_find = random.randint(1, 30)
-    max_guesses = 5
+    to_find: int = random.randint(1, 30)
+    max_guesses: int = 5
 
     print(f"J'ai choisi un nombre entre 1 et 30.\nA vous de le deviner en {max_guesses} tentatives au maximum !")
 

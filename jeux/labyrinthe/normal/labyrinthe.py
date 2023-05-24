@@ -1,8 +1,12 @@
 class Labyrinthe:
     def __init__(self, compo):
-        self.hauteur, self.longueur, self.position_entre, self.position_sortie, self.murs = compo
-        self.position_joueur = self.position_entre  # position initiale du joueur
-        self.passage = []
+        self.hauteur: int = compo[0]
+        self.longueur: int = compo[1]
+        self.position_entre: tuple[int, int] = compo[2]
+        self.position_sortie: tuple[int, int] = compo[3]
+        self.murs: list[tuple[int, int]] = compo[4]
+        self.position_joueur: tuple[int, int] = self.position_entre  # position initiale du joueur
+        self.passage: list[tuple[int, int]] = []
 
     def afficher_labyrinthe(self):
         for i in range(self.hauteur):
@@ -19,15 +23,15 @@ class Labyrinthe:
                     print(" ", end=" ")
             print()
 
-    def deplacer_joueur(self, direction):
-        deplacement = {
+    def deplacer_joueur(self, direction: str) -> bool:
+        deplacement: tuple[int, int] = {
             "z": (-1, 0),
             "s": (1, 0),
             "q": (0, -1),
             "d": (0, 1),
         }.get(direction)
 
-        nouvelle_position = tuple(sum(x) for x in zip(self.position_joueur, deplacement))
+        nouvelle_position: tuple[int, int] = tuple(sum(x) for x in zip(self.position_joueur, deplacement))
 
         if nouvelle_position in self.murs:
             return False
