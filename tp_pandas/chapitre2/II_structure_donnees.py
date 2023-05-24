@@ -93,6 +93,7 @@ for city_name, row in grouped_cities.iterrows():
 
 # 9
 print("\n", 40*"=", "question 9")
+
 # Villes avec le libellé "Montreuil"
 print(40*"*", "Montreuil")
 cities_montreuil = df_city[df_city['LIBGEO'].str.match('montreuil')]

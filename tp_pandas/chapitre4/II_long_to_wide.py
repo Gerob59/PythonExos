@@ -1,6 +1,4 @@
-import pandas as pd
-
-from tp_pandas.chapitre3.df import df
+from tp_pandas.chapitre3.df_formatage import df
 
 # Étape 1: Copie
 df_wide = df.copy()

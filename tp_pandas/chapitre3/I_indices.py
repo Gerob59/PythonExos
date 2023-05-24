@@ -1,7 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-
-from df import df, df_city
+from df_formatage import df, df_city
 
 # 1
 print("\n", 40*"=", "question 1")

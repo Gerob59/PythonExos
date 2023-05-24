@@ -1,6 +1,5 @@
 from matplotlib import pyplot as plt
-
-from tp_pandas.chapitre3.df import df
+from tp_pandas.chapitre3.df_formatage import df
 
 df_wide = df.copy()
 

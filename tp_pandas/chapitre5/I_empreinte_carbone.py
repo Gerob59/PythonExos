@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
-from tp_pandas.chapitre3.df import df
-from tp_pandas.chapitre3.df import df_city
+from tp_pandas.chapitre3.df_formatage import df
+from tp_pandas.chapitre3.df_formatage import df_city
 
 # 1. Calcul des émissions totales par commune
 df['Emissions_CO2'] = df.select_dtypes(include=[np.number]).sum(axis=1)

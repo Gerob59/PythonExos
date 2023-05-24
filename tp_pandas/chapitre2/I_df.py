@@ -1,8 +1,6 @@
 import random
-
+from tp_pandas.chapitre1.data import df
 import pandas as pd
-
-df = pd.read_csv("https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de-rechauffement-global/convert", sep=",")
 
 # sample(n, frac, replace, weights, random_state)
 # n : nombre d'éléments tirés
@@ -14,20 +12,24 @@ df = pd.read_csv("https://koumoul.com/s/data-fair/api/v1/datasets/igt-pouvoir-de
 
 if __name__ == "__main__":
     # 1
-    # print("10 premieres valeurs :", df.head(10))
-    # print("15 dernières valeurs :", df.tail(15))
-    # print("10 valeurs aléatoire :", df.sample(10))
+    print("\n", 40*"=", "question 1")
+    print("10 premieres valeurs :", df.head(10))
+    print("15 dernières valeurs :", df.tail(15))
+    print("10 valeurs aléatoire :", df.sample(10))
 
     # 2
-    # sample_5_percent = df.sample(frac=0.05, replace=False)
-    # print(sample_5_percent)
+    print("\n", 40 * "=", "question 2")
+    sample_5_percent = df.sample(frac=0.05, replace=False)
+    print(sample_5_percent)
 
     # 3
-    # first_10_rows = df.head(10)
-    # sample_100 = first_10_rows.sample(n=100, replace=True)
-    # print(sample_100)
+    print("\n", 40 * "=", "question 3")
+    first_10_rows = df.head(10)
+    sample_100 = first_10_rows.sample(n=100, replace=True)
+    print(sample_100)
 
     # 4
+    print("\n", 40 * "=", "question 4")
     first_6_rows = df.head(6)
     # Créer une liste des poids pour les tirages
     weights = [0.5] + [0.5 / (len(first_6_rows) - 1)] * (len(first_6_rows) - 1)

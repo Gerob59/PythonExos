@@ -1,10 +1,11 @@
 import timeit
-from tp_pandas.chapitre3.df import df
+from tp_pandas.chapitre3.df_formatage import df
 
 df.set_index('INSEE commune', inplace=True)
 df['dep'] = df.index.str.slice(0, 2)
 
 
+# affiche au fur et à mesure le temps de calcul par département et donne le détail de calcul par secteur a la fin
 def compare_execution_times(dataframe):
     sectors = dataframe.columns[1:-1]  # Colonnes correspondant aux secteurs d'activité sans 'dep' et 'Communes'
     execution_times = {}  # Dictionnaire pour stocker les temps d'exécution combinés par secteur
