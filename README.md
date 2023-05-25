@@ -1,4 +1,4 @@
-# Repository pour les exercices de Python de la formation en alternance de DIGINAMIC
+# Repository pour les exercices et les tp de Python de la formation en alternance de DIGINAMIC
 
 Ce repository a été créé pour stocker les exercices de Python effectués dans le cadre de la formation en alternance de DIGINAMIC pour le diplôme de MASTER data-engineer.
 
