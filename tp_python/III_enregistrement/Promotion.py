@@ -1,25 +1,14 @@
+from tp_python.III_enregistrement.Etudiant import Etudiant
+
+
 class Promotion:
-    def __init__(self, etudiants):
+    def __init__(self, etudiants: [Etudiant]):
         self.etudiants = etudiants
 
-    def moyenne_discipline(self, discipline):
-        total = 0
-        count = 0
-        for etudiant in self.etudiants.values():
-            if discipline in etudiant.notes:
-                total += etudiant.notes[discipline]
-                count += 1
-        if count == 0:
-            return 0
-        else:
-            return total / count
+    def moyenne_discipline(self, discipline: str) -> float:
+        notes_discipline = [etudiant.notes[discipline] for etudiant in self.etudiants if discipline in etudiant.notes]
+        return sum(notes_discipline) / len(notes_discipline) if notes_discipline else 0
 
-    def meilleur_etudiant(self):
-        meilleur_etudiant = None
-        meilleure_moyenne = 0
-        for etudiant in self.etudiants.values():
-            moyenne_etudiant = etudiant.moyenne()
-            if moyenne_etudiant > meilleure_moyenne:
-                meilleure_moyenne = moyenne_etudiant
-                meilleur_etudiant = etudiant
-        return meilleur_etudiant
+    def meilleur_etudiant(self) -> Etudiant:
+        return max(self.etudiants, key=lambda etudiant: etudiant.moyenne(), default=None)
+

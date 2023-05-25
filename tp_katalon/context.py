@@ -1,0 +1,6 @@
+# Je définis le context des imports pour mes futurs fichiers Test_
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import tp_python
