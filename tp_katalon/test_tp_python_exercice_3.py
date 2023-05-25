@@ -1,6 +1,5 @@
 import unittest
-from tp_python.III_enregistrement.Etudiant import Etudiant
-from tp_python.III_enregistrement.Promotion import Promotion
+from context import Etudiant, Promotion
 
 
 class TestEtudiant(unittest.TestCase):
